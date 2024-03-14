@@ -3,8 +3,13 @@ JMX Query
 
 A simple jar to query JMX data from a JVM and return in a format that can easily be used in Nagios check scripts.
 
-Requires Java 1.5 or above.
+Requires Java 1.8 or above.
 
+
+Building the Jar
+----------------
+
+Run `mvn package`, modifying the pom.xml file for your environment if needed. This will compile the code for Java 1.8 and build the Jar ready to run.
 
 Usage
 ------
@@ -78,11 +83,6 @@ You can get multiple values by joining the mbeans together with semi colons.
 ```
 java -jar JMXQuery.jar -url service:jmx:rmi:///jndi/rmi://localhost:1616/jmxrmi -q "java.lang:type=ClassLoading/LoadedClassCount;java.lang:type=ClassLoading/UnloadedClassCount"
 ```
-
-Building the Jar
-----------------
-
-Simply run the ./build.sh, modifying the build parameters for your environment in the script. This will compile the code for Java 1.5 and build the Jar ready to run.
 
 License & Credits
 -----------------

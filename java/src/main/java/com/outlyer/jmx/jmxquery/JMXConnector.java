@@ -256,7 +256,7 @@ public class JMXConnector {
                     attributes.addAll(getAttributes(foundKey, cData.get(key)));
                 }
             }    
-        } else if (value instanceof TabularDataSupport) {
+        } else if (value instanceof TabularDataSupport || value instanceof String || value instanceof ObjectName) {
             // Ignore getting values for these types
             attribute.setAttributeType(value);
             attributes.add(attribute);
