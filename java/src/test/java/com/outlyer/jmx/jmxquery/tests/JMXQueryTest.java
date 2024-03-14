@@ -42,41 +42,25 @@ public class JMXQueryTest {
     }
     
     @Test
-    public void testLocalProcessConnection() throws Exception {
-        
-        JMXQuery.main(new String[]{"-proc", "org.netbeans.Main", "-metrics",
-                        "java.lang:type=ClassLoading/LoadedClassCount;"
-                      + "java.lang:type=Memory/HeapMemoryUsage/max"});
-    }
-    
-    @Test
     public void testUrlConnection() throws Exception {
-        
-        String url = JMXTools.getLocalJMXConnection("org.netbeans.Main");
+
+        String url = "service:jmx:rmi://localhost:1099/jndi/rmi://localhost:1099/jmxrmi";
+        //String url = JMXTools.getLocalJMXConnection("org.netbeans.Main");
         System.out.println("Connection URL: " + url);
         
         JMXQuery.main(new String[]{"-url", url, 
-                        "-metrics",
+                        "-query",
                         "java.lang:type=ClassLoading/LoadedClassCount;"
                       + "java.lang:type=Memory/HeapMemoryUsage/max"});
-    }
-    
-    @Test
-    public void testListJVMs() throws Exception {
-        
-        String url = JMXTools.getLocalJMXConnection("org.netbeans.Main");
-        System.out.println(url);
-        
-        JMXQuery.main(new String[]{"-url", url, 
-                        "-list", "jvms"});
     }
     
     @Test
     public void testListMBeans() throws Exception {
-        
-        String url = JMXTools.getLocalJMXConnection("org.netbeans.Main");
+
+        String url = "service:jmx:rmi://localhost:1099/jndi/rmi://localhost:1099/jmxrmi";
+//        String url = JMXTools.getLocalJMXConnection("org.netbeans.Main");
         System.out.println(url);
         
-        JMXQuery.main(new String[]{"-url", url, "-list", "mbeans", "*:*"});
+        JMXQuery.main(new String[]{"-url", url, "-query", "*:*"});
     }
 }
