@@ -9,7 +9,7 @@ Requires Java 1.8 or above.
 Building the Jar
 ----------------
 
-Run `mvn package`, modifying the pom.xml file for your environment if needed. This will compile the code for Java 1.8 and build the Jar ready to run.
+Run `mvn package`, modifying the pom.xml file for your environment if needed. This will compile the code for Java 1.8 and build the Jar ready to run. A number of unit tests will be run while building the Jar file, which assumes a JMX endpoint is available via http://localhost:1099. 
 
 Usage
 ------
